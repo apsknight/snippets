@@ -1,3 +1,8 @@
+/** Author : Aman Pratap Singh
+ *  Compiler : G++
+ *  Problem URL : https://www.codechef.com/problems/CHEFCH
+ */
+
 #include <iostream>
 
 using namespace std;

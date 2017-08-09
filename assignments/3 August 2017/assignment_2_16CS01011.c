@@ -83,7 +83,7 @@ int main() {
        		printf("(%d,%d)\n", p.x, p.y); 
        		pop();
 		}
-		printf("(%d,%d)\n", p0.x, p0.y);
+		printf("(%d,%d)\n\n", p0.x, p0.y);
 	}
 }
 

@@ -2,7 +2,7 @@
  *	Aman Pratap Singh (Github: @apsknight), 16CS01011
  *	Indian Institute of Technology Bhubaneswar 
  *	Assignment - 2, Data Structure Lab
- * 	Following Algorithm is implemented with the help of Geeksforgeeks tutorial on Graham's Scan.
+ * 	https://github.com/apsknight/snippets/blob/master/assignments/3%20August%202017/README.md
  */
 
 #include <stdio.h>

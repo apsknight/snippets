@@ -12,13 +12,13 @@ Input:
 ```
 7
 2 3 4 1 5 6 7
-1	# Insearting a photo with 5 initial votes.
+1	            # Insearting a photo with 5 initial votes.
 5
-2	# Upvoting photo with ID 4 
+2	            # Upvoting photo with ID 4 
 4
-3	# Downvoting photo with ID 1
+3	            # Downvoting photo with ID 1
 1
-4	# Deleting photo with ID 6
+4	            # Deleting photo with ID 6
 6
 ```
 

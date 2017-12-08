@@ -26,7 +26,7 @@ typedef vector<int> vi;
 
 int main() {
 	off;
-	int n;
+	int n, t;
 	cin >> n;
 	n++;
 

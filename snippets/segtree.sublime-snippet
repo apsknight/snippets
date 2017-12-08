@@ -1,0 +1,54 @@
+<snippet>
+	<content><![CDATA[
+int construct(int* a, int* st, int lo, int hi, int ind) {
+	if (lo == hi) {
+		st[ind] = a[lo];
+		return a[lo];
+	}
+
+	int mid = lo + (hi-lo) / 2;
+
+	st[ind] = min(construct(a, st, lo, mid, 2*ind + 1), construct(a, st, mid+1, hi, 2*ind + 2));
+
+	return st[ind];
+}
+
+int query(int* st, int lo, int hi, int qlo, int qhi, int ind) {
+	if (qlo <= lo && qhi >= hi)
+		return st[ind];
+	if (hi < qlo || lo > qhi)
+		return INT_MAX;
+
+	int mid = lo + (hi - lo) / 2;
+
+	return min(query(st, lo, mid, qlo, qhi, 2*ind + 1), query(st, mid+1, hi, qlo, qhi, 2*ind + 2));
+}
+
+void update(int* st, int* a, int start, int end, int pos, int idx, int val)
+{
+    if(start == end) {
+        a[idx] += val;
+        st[pos] += val;
+    }
+    else {
+        int mid = (start + end) / 2;
+        if(start <= idx and idx <= mid) {
+            update(2*pos, start, mid, idx, val);
+        }
+        else {
+            update(2*pos + 1, mid + 1, end, idx, val);
+        }
+        st[pos] = min(st[2*pos], st[2*pos + 1]);
+    }
+}
+
+	int x = (int)(ceil(log2(n))); 
+	int stsz = 2*(int)pow(2, x) - 1;
+	// debug(stsz);
+	int st[stsz];
+	memset(st, 0, sizeof(st));
+	construct(a, st, 0, n-1, 0);
+]]></content>
+	<tabTrigger>segtree</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

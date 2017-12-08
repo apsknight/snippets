@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+ll C(int n, int r, int M) {
+	if (r > n / 2) r = n - r;
+
+	ll ans = 1;
+
+	for (int i = 1; i <= r; i++) {
+		ans *= n - r + i;
+		ans %= M;
+		ans /= i;
+	}
+
+	return ans;
+}
+]]></content>
+	<tabTrigger>combination</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

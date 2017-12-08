@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+void multiply(int* a, int& n, int mult) {
+	int carry = 0;
+	for(int i = 0; i < n; i++) {
+		int product = a[i]*mult + carry;
+		a[i] = product % 10;
+		carry = product / 10;
+	}
+
+	while(carry) {
+		a[n] = carry % 10;
+		carry /= 10;
+		n++;
+	}
+}
+]]></content>
+	<tabTrigger>bigmult</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

@@ -28,19 +28,31 @@ int main() {
 	off;
 	int n;
 	cin >> n;
-	n++;
 
-	for(int i = 0; i < n; i++) {
-		for(int j = 0; j < n - i; j++) {
-			cout << "  ";
-		}
+	int a[11][11];
 
-		for(int j = 0; j < i + 1; j++) {
-			cout << t % 10 << "  ";
-			t = t / 10;
+	rep(i, 11) {
+		rep(j, 11) {
+			a[i][j] = 0;
 		}
-		cout << "\n";
 	}
 
+	fogg(i, 0, n) {
+		a[i][0] = 1;
+	}
+
+	fogg(i, 1, n) {
+		fogg(j, 1, i) {
+			a[i][j] = a[i-1][j] + a[i-1][j-1];
+		}
+	}
+
+	fogg(i, 0, n) {
+		rep(k, n-i) cout << " ";
+		fogg(j, 0, i) {
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
   	return 0;
 }

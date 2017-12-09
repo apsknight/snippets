@@ -64,15 +64,9 @@ int main() {
 	}
 	int x = (int)(ceil(log2(n))); 
 	int stsz = 2*(int)pow(2, x) - 1;
-	// debug(stsz);
 	int st[stsz];
 	memset(st, 0, sizeof(st));
 	construct(a, st, 0, n-1, 0);
-
-	// rep(i, stsz) {
-	// 	cout << st[i] << " ";
-	// }
-	// cout << endl;
 
 	test {
 		ll p, q;

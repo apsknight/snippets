@@ -16,6 +16,7 @@ ll C(int n, int r) {
 
 	return ans;
 }
+
 int main() {
 	int n, r;
 	cin >> n >> r;

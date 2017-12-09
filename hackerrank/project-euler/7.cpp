@@ -18,46 +18,21 @@ typedef vector<int> vi;
 #define MOD (long long)10000000007
 const int INF = 0x3f3f3f3f;
 
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
-
 int main() {
 	off;
-	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
-			cin >> a[i];
-		}
-
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
-			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
-			}
-		}
-		if (!flag) {
-			cout << "No" << endl;
-		}
+	int sieve[1000007];
+	for(int i = 2; i*i <= 1000007; i++)
+			if (sieve[i] == 0)	for(int j = i*2; j <= 1000003; j += i) sieve[j] = 1;
+	vi prime;
+	for(int i = 2; i < 1000003; i++) {
+		if (sieve[i] == 0) prime.push_back(i);
 	}
+
+	test {
+		int n;
+		cin >> n;
+		cout << prime[n-1] << endl;
+	}
+
   	return 0;
 }

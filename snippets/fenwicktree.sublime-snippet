@@ -1,0 +1,48 @@
+<snippet>
+	<content><![CDATA[
+class FenwickTree {
+    node* root;
+    
+public:
+    void update(vector<int> tree, int val, int index) {
+    	while (index < tree.length()) {
+    		tree[index] += val;
+    		index = getNext(index);
+    	}
+    }
+    
+    int getSum(int tree[], int index) {
+    	++index;
+    	int sum = 0;
+
+    	while (index > 0) {
+    		sum += tree[index];
+    		index = getParent(index);
+    	}
+
+    	return sum;
+    }
+    
+    int[] createTree(vector<int> input) {
+    	int tree[] = new int[input.length() + 1];
+
+    	for (int i = 1; i < input.length() + 1; ++i) {
+    		update(tree, input[i-1], i);
+    	}
+
+    	return tree;
+    }
+
+private:
+	int getParent(int index) {
+		return index - (index & -index);
+	} 
+
+	int getNext(int index) {
+		return index + (index & -index);
+	} 
+};
+]]></content>
+	<tabTrigger>bitree</tabTrigger>
+	<scope>source.c++</scope>
+</snippet>

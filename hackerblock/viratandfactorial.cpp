@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 
+#define test int t; cin >> t; while(t--)
 void multiply(int* a, int& n, int mult) {
 	int carry = 0;
 	for(int i = 0; i < n; i++) {
@@ -31,10 +32,11 @@ void factorial(int number) {
 	cout << "\n";
 }
 int main() {
-	int n;
-	cin >> n;
-
-	factorial(n);
+	test {
+		int n;
+		cin >> n;
+		factorial(n);
+	}
 
 	return 0;
 }

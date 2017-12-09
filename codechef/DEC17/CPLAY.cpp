@@ -18,46 +18,38 @@ typedef vector<int> vi;
 #define MOD (long long)10000000007
 const int INF = 0x3f3f3f3f;
 
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
-
 int main() {
 	off;
-	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
-			cin >> a[i];
-		}
+	st s;
 
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
+	while(cin >> s) {
+		ll t1 = 0, t2 = 0, p = 5, q = 5, mat = 0;
+		rep(i, 10) {
+			if (i % 2) {
+				t2 += s[i]-'0';
+				q--;
 			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
+			else {
+				t1 += s[i]-'0';
+				p--;
 			}
+			mat++;
+			if (t1-t2 > q) break;
+			else if (t2-t1 > p) break;
 		}
-		if (!flag) {
-			cout << "No" << endl;
+		if (t1 != t2) {
+			if (t1 > t2) cout << "TEAM-A " << mat << endl;
+			else cout << "TEAM-B " << mat << endl;
+			continue;
 		}
+		while (t1 == t2 && mat < 20) {
+			t1 += s[mat++]-'0';
+			t2 += s[mat++]-'0';
+		}
+		if (t1 > t2) cout << "TEAM-A " << mat << endl;
+		else if (t2 > t1) cout << "TEAM-B " << mat << endl;
+		else cout << "TIE" << endl;
 	}
+
   	return 0;
 }

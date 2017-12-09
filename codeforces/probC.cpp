@@ -18,46 +18,45 @@ typedef vector<int> vi;
 #define MOD (long long)10000000007
 const int INF = 0x3f3f3f3f;
 
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
+ll dfs (int i, vector<int> g[], bool* visited, ll* a) {
+	if (visited[i]) return 0;
+	visited[i] = true;
+	ll ans = a[i-1];
+	for (int j = 0; j < g[i].size(); j++) {
+		debug(j);
+		debug(g[i][j]);
+		debug(ans);
+		if (!visited[g[i][j]]) ans = min(dfs(g[i][j], g, visited, a), ans);
+		debug(ans);
+	}
 
+	return ans;
+}	
 int main() {
 	off;
-	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
-			cin >> a[i];
-		}
+	ll n, m;
+	cin >> n >> m;
+	ll a[n];
 
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
-			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
-			}
-		}
-		if (!flag) {
-			cout << "No" << endl;
-		}
+	rep(i, n) {
+		cin >> a[i];
 	}
+	bool visited[n] = {false};
+
+	vector<int> g[n+1];
+	rep(i, m) {
+		int t1, t2;
+		cin >> t1 >> t2;
+		g[t1].push_back(t2);
+		g[t2].push_back(t1);
+	}
+	ll ans = 0;
+	fogg(i, 1, n) {
+		ans += dfs(i, g, visited, a);
+		debug(i);
+		debug(ans);
+	}
+
+	cout << ans << endl;
   	return 0;
 }

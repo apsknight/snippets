@@ -15,49 +15,23 @@ typedef vector<int> vi;
 #define debug(x) cout << '>' << #x << ':' << x << "\n";
 #define endl '\n'
 #define off ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define INF (int)1<<20
 #define MOD (long long)10000000007
-const int INF = 0x3f3f3f3f;
-
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
 
 int main() {
 	off;
-	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
-			cin >> a[i];
-		}
-
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
-			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
-			}
-		}
-		if (!flag) {
-			cout << "No" << endl;
-		}
+	int n;
+	cin >> n;
+	st s;
+	cin >> s;
+	int l = 0, u = 0, d = 0, r = 0;
+	rep(i, n) {
+		if (s[i] == 'L') l++;
+		else if (s[i] == 'R') r++;
+		else if (s[i] == 'U') u++;
+		else if (s[i] == 'D') d++;
 	}
+
+	cout << (min(l, r)*2 + min(u, d)*2) << endl;
   	return 0;
 }

@@ -18,46 +18,31 @@ typedef vector<int> vi;
 #define MOD (long long)10000000007
 const int INF = 0x3f3f3f3f;
 
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
-
 int main() {
 	off;
 	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
+		int n;
+		cin >> n;
+		int a[n+1];
+		int freq[n+1]={0};
+		int temp = 0, small = 0, large = 0;
+		freq[0] = 1;
+		fogg(i, 1, n) {
 			cin >> a[i];
-		}
-
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
+			temp = (temp + a[i]) % n;
+			if (freq[temp]) {
+				small = freq[temp], large = i;
 			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
-			}
+			freq[temp] = i+1;
 		}
-		if (!flag) {
-			cout << "No" << endl;
+		// debug(large);
+		// debug(small);
+		cout << large-small+1 << endl;
+		while (small <= large) {
+			cout << small++ << " ";
 		}
+		cout << endl;
 	}
+
   	return 0;
 }

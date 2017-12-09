@@ -18,46 +18,38 @@ typedef vector<int> vi;
 #define MOD (long long)10000000007
 const int INF = 0x3f3f3f3f;
 
-ll power(ll a, ll b) {
-    if (b == 0) return 1;
-    
-    ll ans = power(a, b / 2);
-    ans *= ans;
-    if (b & 1) return ans * a;
-    
-    return ans; 
-}
+ll sum[1000007] = {0};
+ll dp[1000007] = {0};
+int a[2000007];
 
 int main() {
 	off;
-	test {
-		int n, q;
-		cin >> n >> q;
-		int a[n];
-		rep(i, n) {
-			cin >> a[i];
+	ll ans = 0;
+	fogg(i, 1, 2000003) {
+		int temp = i;
+		int qw = 0;
+		while(temp) {
+			if ((temp%10) % 2 == 0) qw += temp % 10;
+			else qw -= temp % 10;
+			temp /= 10;
 		}
+		a[i]=abs(qw);
+	}
+	sum[2] = 10;
+	sum[3] = 24;
+	fogg(i, 4, 1000003) {
+		sum[i] = sum[i-1] - 2 * a[i] + 2 * a[2*i - 1] + a[2*i - 2] + a[2*i];
+	}
+	dp[1] = 2;
+	fogg(i, 2, 1000003) {
+		dp[i] = dp[i-1] + sum[i];
+	}
 
-		int bit = power(2, n) - 1;
-		bool flag = false;
-		for(int i = 1; i <= bit; i++) {
-			int temp = i;
-			int sum = 0;
-			int ctr = 0;
-			while(temp) {
-				if (temp & 1) sum += a[ctr];
-				temp = temp >> 1;
-				ctr++;
-			}
-			if (sum == q) {
-				cout << "Yes" << endl;
-				flag = true;
-				break;
-			}
-		}
-		if (!flag) {
-			cout << "No" << endl;
-		}
+	test {
+		int n;
+		cin >> n;
+
+		cout << dp[n%1000007] << endl;
 	}
   	return 0;
 }

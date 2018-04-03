@@ -68,7 +68,7 @@ int main() {
     g.addEdge('E', 'F', 3);
     g.addEdge('D', 'F', 2);
 
-    g.djikshtra('A', 'F');
+    g.djikshtra('A', 'D');
 
     return 0;
 }

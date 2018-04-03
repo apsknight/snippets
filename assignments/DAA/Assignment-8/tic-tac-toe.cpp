@@ -42,11 +42,11 @@ int main() {
         string x = q.front().first;
         int level = q.front().second;
         q.pop();
-        if (win(x, '1') && !o) {
+        if (win(x, '1') & !o) {
             cout << "Player 1 win in steps: " << level << endl;
             o = true;
         }
-        else if (win(x, '2') && !t) {
+        else if (win(x, '2') & !t) {
             cout << "Player 2 win in steps: " << level << endl;
             t = true;
         }
@@ -57,24 +57,24 @@ int main() {
         string y = x, z = x;
         int one = 0, two = 0;
 
-        for(int i = 0; i < 8; i++) {
+        for(int i = 0; i < 9; i++) {
             if (x[i] == '1') one++;
             if (x[i] == '2') two++;
         }
-
         if (one == two)
-        for(int i = 0; i < 8; i++) {
+        for(int i = 0; i < 9; i++) {
             if (x[i] == '0') {
                 y[i] = '1';
+                // cout << y << endl;
                 q.push(make_pair(y, level));
                 y = x;                
             }
         }
-
         if (one == two + 1)
-        for(int i = 0; i < 8; i++) {
+        for(int i = 0; i < 9; i++) {
             if (x[i] == '0') {
                 z[i] = '2';
+                // cout << z << endl;                
                 q.push(make_pair(z, level));                
                 z = x;
             }

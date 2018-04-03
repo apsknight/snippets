@@ -14,49 +14,49 @@ typedef vector<int> vi;
 #define MOD 1000000007
 
 void heapify(int* a, int n, int i) {
-    int left = 2*i + 1;
-    int right = 2*i + 2;
-    int large = i;
-    if (a[left] > a[large] && left < n) {
-        large = left;
-    }
-    if (a[right] > a[large] && right < n) {
-        large = right;
-    }
+	int left = 2*i + 1;
+	int right = 2*i + 2;
+	int large = i;
+	if (a[left] > a[large] && left < n) {
+		large = left;
+	}
+	if (a[right] > a[large] && right < n) {
+		large = right;
+	}
 
-    if (large != i) {
-        swap(a[large], a[i]);
-        heapify(a, n, large);
-    }
+	if (large != i) {
+		swap(a[large], a[i]);
+		heapify(a, n, large);
+	}
 }
 
 void heapsort(int* a, int n) {
-    for(int i = n / 2 - 1; i >= 0; i--) {
-        heapify(a, n, i);
-    }
+	for(int i = n / 2 - 1; i >= 0; i--) {
+		heapify(a, n, i);
+	}
 
-    for(int i = n-1; i >= 0; i--) {
-        swap(a[0], a[i]);
-        heapify(a, i, 0);
-    }
+	for(int i = n-1; i >= 0; i--) {
+		swap(a[0], a[i]);
+		heapify(a, i, 0);
+	}
 }
 
 int main() {
-    off;
-    int n;
-    cin >> n;
-    int a[n];
+	off;
+	int n;
+	cin >> n;
+	int a[n];
 
-    rep(i, n) {
-        cin >> a[i];
-    }
+	rep(i, n) {
+		cin >> a[i];
+	}
 
-    heapsort(a, n);
+	heapsort(a, n);
 
-    rep(i, n) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
+	rep(i, n) {
+		cout << a[i] << " ";
+	}
+	cout << endl;
 
-    return 0;
+	return 0;
 }

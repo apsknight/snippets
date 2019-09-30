@@ -6,10 +6,10 @@ int duplication(int x){
     // Complete this function
     int i = 0;
     while (x != 0) {
-	    i = i + x%2;
-	    x = x/2;
+	    i = i + x&1;
+	    x = x>>2;
     }
-    i = i%2;
+    i = i&1;
     return i;
 }
 
